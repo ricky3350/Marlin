@@ -46,6 +46,9 @@ void safe_delay(millis_t ms);
   // Convert unsigned float to string with 1.23 format
   char* ftostr12ns(const float &x);
 
+  // Convert unsigned float to string with 123.4 format
+  char *ftostr31ns(const float &x);
+
   // Convert signed float to fixed-length string with 023.45 / -23.45 format
   char* ftostr32(const float &x);
 

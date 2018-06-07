@@ -77,11 +77,11 @@ void safe_delay(millis_t ms) {
   char* itostr3left(const int xx) {
     char *str = &conv[6];
     *str = DIGIMOD(xx, 1);
-    if (xx >= 10) {
+    // if (xx >= 10) {
       *(--str) = DIGIMOD(xx, 10);
-      if (xx >= 100)
+      // if (xx >= 100)
         *(--str) = DIGIMOD(xx, 100);
-    }
+    // }
     return str;
   }
 
@@ -124,6 +124,17 @@ void safe_delay(millis_t ms) {
     conv[5] = DIGIMOD(xx, 10);
     conv[6] = DIGIMOD(xx, 1);
     return &conv[3];
+  }
+
+  // Convert unsigned float to string with 123.4 format
+  char* ftostr31ns(const float &x) {
+	  const long xx = (x < 0 ? -x : x) * 10;
+	  conv[2] = RJDIGIT(xx, 1000);
+	  conv[3] = DIGIMOD(xx, 100);
+	  conv[4] = DIGIMOD(xx, 10);
+	  conv[5] = '.';
+	  conv[6] = DIGIMOD(xx, 1);
+	  return &conv[2];
   }
 
   // Convert signed float to fixed-length string with 023.45 / -23.45 format
