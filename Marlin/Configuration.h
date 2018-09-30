@@ -119,7 +119,7 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EEB
+  #define MOTHERBOARD BOARD_AMR3350
 #endif
 
 // Optional custom name for your RepStrap or other custom machine
@@ -1323,7 +1323,7 @@
 //#define DOGLCD      // Full graphics display
 
 // Enable custom LCD display (ricky3350)
-//#define CUSTOM_LCD
+#define CUSTOM_LCD
 #if ENABLED(CUSTOM_LCD)
   #define LCD_WIDTH 20
   #define LCD_HEIGHT 4
