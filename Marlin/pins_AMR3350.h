@@ -40,7 +40,7 @@
 #endif
 #define Y_MIN_PIN          45
 #define Y_MAX_PIN          44
-#define Z_MIN_PIN          43
+#define Z_MIN_PIN          17 // 17 for the 12V Z- pin, 43 otherwise
 #define Z_MAX_PIN          42
 
 //
@@ -82,7 +82,7 @@
 #if DISABLED(SDSUPPORT)
 #define MAX6675_SS       60 // Do not use pin 53 if there is even the remote possibility of using Display/SD card
 #else
-#define MAX6675_SS       60 // Do not use pin 49 as this is tied to the switch inside the SD card socket to detect if there is an SD card present
+#define MAX6675_SS       60 // Do not use pin 11 as this is tied to the switch inside the SD card socket to detect if there is an SD card present
 #endif
 
 //
@@ -113,10 +113,10 @@
 // Misc. Functions
 //
 #define SDSS               53
-#define LED_PIN            16
+#define LED_PIN            13
 
 #ifndef FILWIDTH_PIN
-#define FILWIDTH_PIN      12   // Analog Input on AUX2
+#define FILWIDTH_PIN      48   // Analog Input on AUX2
 #endif
 
 #define FIL_RUNOUT_PIN      -1
@@ -166,9 +166,9 @@
 
 #if ENABLED(CR10_STOCKDISPLAY)
 
-#define LCD_PINS_RS       48
-#define LCD_PINS_ENABLE   18
-#define LCD_PINS_D4       49
+#define LCD_PINS_RS       12
+#define LCD_PINS_ENABLE   16
+#define LCD_PINS_D4       11
 
 #if DISABLED(NEWPANEL)
 #define BEEPER_PIN      37
@@ -177,22 +177,22 @@
 #else
 
 #if ENABLED(MKS_12864OLED) || ENABLED(MKS_12864OLED_SSD1306)
-#define LCD_PINS_DC     49 // Set as output on init
-#define LCD_PINS_RS     48 // Pull low for 1s to init
+#define LCD_PINS_DC     11 // Set as output on init
+#define LCD_PINS_RS     12 // Pull low for 1s to init
 // DOGM SPI LCD Support
-#define DOGLCD_CS       11
-#define DOGLCD_MOSI     12
-#define DOGLCD_SCK      13
+#define DOGLCD_CS       49
+#define DOGLCD_MOSI     48
+#define DOGLCD_SCK      18
 #define DOGLCD_A0       LCD_PINS_DC
 #else
-#define LCD_PINS_RS     11
-#define LCD_PINS_ENABLE 12
-#define LCD_PINS_D4     13
-#define LCD_PINS_D5     49
-#define LCD_PINS_D6     48
+#define LCD_PINS_RS     49
+#define LCD_PINS_ENABLE 48
+#define LCD_PINS_D4     18
+#define LCD_PINS_D5     11
+#define LCD_PINS_D6     12
 #endif
 
-#define LCD_PINS_D7       18
+#define LCD_PINS_D7       16
 
 #if DISABLED(NEWPANEL)
 #define BEEPER_PIN      41
@@ -212,8 +212,8 @@
 #define BEEPER_PIN        37
 
 #if ENABLED(CR10_STOCKDISPLAY)
-#define BTN_EN1         12
-#define BTN_EN2         13
+#define BTN_EN1         48
+#define BTN_EN2         18
 #else
 #define BTN_EN1         38
 #define BTN_EN2         41
@@ -271,10 +271,10 @@
 
 #elif ENABLED(ELB_FULL_GRAPHIC_CONTROLLER)
 
-#define DOGLCD_CS         18
-#define DOGLCD_A0         48
+#define DOGLCD_CS         16
+#define DOGLCD_A0         12
 
-#define BEEPER_PIN        13
+#define BEEPER_PIN        18
 #define LCD_BACKLIGHT_PIN 41
 
 #define BTN_EN1           40
@@ -287,8 +287,8 @@
 
 #elif ENABLED(MKS_MINI_12864)  // Added in Marlin 1.1.6
 
-#define DOGLCD_A0         48
-#define DOGLCD_CS         49
+#define DOGLCD_A0         12
+#define DOGLCD_CS         11
 
 // GLCD features
 //#define LCD_CONTRAST   190

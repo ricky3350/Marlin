@@ -183,6 +183,8 @@ void ok_to_send();
 
 void kill(const char*);
 
+void kill_maxtemp(const char*);
+
 void quickstop_stepper();
 
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)

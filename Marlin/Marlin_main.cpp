@@ -14267,6 +14267,41 @@ void kill(const char* lcd_msg) {
   } // Wait for reset
 }
 
+void kill_maxtemp(const char* lcd_msg) {
+	// Turn on alarm
+	BUZZ(65535, 1108);
+
+	// Turn on all fans
+#if PIN_EXISTS(E0_AUTO_FAN)
+	digitalWrite(E0_AUTO_FAN_PIN, HIGH);
+	analogWrite(E0_AUTO_FAN_PIN, 255);
+#endif
+#if PIN_EXISTS(E1_AUTO_FAN)
+	digitalWrite(E1_AUTO_FAN_PIN, HIGH);
+	analogWrite(E1_AUTO_FAN_PIN, 255);
+#endif
+#if PIN_EXISTS(E2_AUTO_FAN)
+	digitalWrite(E1_AUTO_FAN_PIN, HIGH);
+	analogWrite(E1_AUTO_FAN_PIN, 255);
+#endif
+#if PIN_EXISTS(E3_AUTO_FAN)
+	digitalWrite(E1_AUTO_FAN_PIN, HIGH);
+	analogWrite(E1_AUTO_FAN_PIN, 255);
+#endif
+
+#if HAS_FAN0
+	analogWrite(FAN_PIN, CALC_FAN_SPEED(0));
+#endif
+#if HAS_FAN1
+	analogWrite(FAN1_PIN, CALC_FAN_SPEED(1));
+#endif
+#if HAS_FAN2
+	analogWrite(FAN2_PIN, CALC_FAN_SPEED(2));
+#endif
+
+	kill(lcd_msg);
+}
+
 /**
  * Turn off heaters and stop the print in progress
  * After a stop the machine may be resumed with M999
